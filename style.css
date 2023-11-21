@@ -1,0 +1,27 @@
+root{
+    --Dark-Blue: hsl(209, 23%, 22%);
+--Very-Dark-Blue: hsl(207, 26%, 17%);
+--Very-Dark-Blue-Light: hsl(200, 15%, 8%);
+--Dark-Gray-Light: hsl(0, 0%, 52%);
+--Very-Light-Gray-Light: hsl(0, 0%, 98%);
+--White: hsl(0, 0%, 100%)
+}
+body{
+    font-size:14px;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    padding:10px;
+}
+.search{
+    display:flex;
+    justify-content:space-between;
+}
+img{
+    width:100%;
+}
+.card{
+    max-width:400px;
+}
