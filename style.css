@@ -1,4 +1,4 @@
-root{
+:root{
     --Dark-Blue: hsl(209, 23%, 22%);
 --Very-Dark-Blue: hsl(207, 26%, 17%);
 --Very-Dark-Blue-Light: hsl(200, 15%, 8%);
@@ -8,20 +8,46 @@ root{
 }
 body{
     font-size:14px;
+    background: var(--Very-Light-Gray-Light);
 }
 
 header{
     display:flex;
     justify-content:space-between;
     padding:10px;
+    background:white;
 }
 .search{
     display:flex;
     justify-content:space-between;
 }
 img{
-    width:100%;
+    min-width:100%;
+    min-height:180px;
+    border-radius:10px 10px 0 0;
 }
 .card{
-    max-width:400px;
+    display:flex;
+    flex-direction:column;
+    background:white;
+    width:16rem;
+    font-size:18px;
+    border-radius:10px;
+    line-height:1.5;
+}
+.card .name{
+    font-size:22px;
+    margin:20px;
+}
+.card span{
+    margin:0 20px;
+}
+.card span:last-child{
+    margin-bottom:20px;
+}
+.container{
+    display:flex;
+    flex-flow:row wrap;
+    gap:50px;
+    margin:50px;
 }
