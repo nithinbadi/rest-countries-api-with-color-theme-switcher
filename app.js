@@ -3,6 +3,8 @@ const cont = document.querySelector('.search')
 var search=[];
 const prompt='in';
 const container = document.querySelector('.container')
+let darkBool = false;
+
 function createCard(c){
     
     const div = document.createElement('div');
@@ -24,6 +26,9 @@ function createCard(c){
     div.appendChild(region);
     div.appendChild(capital);
     div.classList.add('card');
+    if(darkBool){
+        div.classList.toggle('dark-input')
+    }
     container.appendChild(div);
 }
 
@@ -40,7 +45,7 @@ for(let i=0;i<act.length;i++){
 
 ['input','change'].forEach(elem=>{
     cont.addEventListener(elem,(e)=>{
-        console.clear();
+        // console.clear();
         container.innerHTML =``;
         for(let s of search){
             if(s.toLowerCase().indexOf(promptInput.value) == 0){
@@ -57,3 +62,36 @@ for(let i=0;i<act.length;i++){
     });
 });
 
+//toggling dark mode tasks
+
+const dark = document.querySelector('.dark-mode')
+const header = document.querySelector('header')
+const button = document.querySelector('header button')
+const input = document.querySelector('.search input')
+const select = document.querySelector('select')
+
+dark.addEventListener('click',(e)=>{
+    document.body.classList.toggle('dark');
+   header.classList.toggle('dark-input');
+   button.classList.toggle('dark-input');
+   input.classList.toggle('dark-input');
+   select.classList.toggle('dark-input');
+   for(let card of container.children){
+    card.classList.toggle('dark-input');
+
+   }
+   if(darkBool){
+    darkBool = false;
+   }else{
+    darkBool=true;
+   }
+})
+
+
+
+// card click to details page
+for(let card of container.children){
+    card.addEventListener('click',(e)=>{
+        
+    })
+}

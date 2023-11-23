@@ -8,18 +8,46 @@
 }
 body{
     font-size:14px;
-    background: var(--Very-Light-Gray-Light);
+    background-color: var(--Very-Light-Gray-Light);
+    color:var(--Dark-Blue);
+    margin:0;
 }
-
+.dark-mode{
+    border:none;
+    background-image: url('assets\\moon-solid.svg');
+    background-repeat:no-repeat;
+    text-indent:12px;
+    background-color:white;
+    background-position:0.2rem center;
+    background-size:10px;
+    
+}
+.dark-mode svg{
+    width:10px;
+    /* vertical-align:middle; */
+}
 header{
     display:flex;
     justify-content:space-between;
-    padding:10px;
-    background:white;
+    padding:20px 50px ;
+    background-color:var(--White);
+}
+header span{
+    font-weight:800;
+    font-size:18px;
 }
 .search{
     display:flex;
     justify-content:space-between;
+    margin:50px;
+}
+.search select{
+    border:none;
+    width:200px;
+    padding:5px;
+}
+option{
+    padding:15px;
 }
 img{
     min-width:100%;
@@ -29,8 +57,8 @@ img{
 .card{
     display:flex;
     flex-direction:column;
-    background:white;
-    width:16rem;
+    background-color:var(--White);
+    width:18rem;
     font-size:18px;
     border-radius:10px;
     line-height:1.5;
@@ -48,6 +76,27 @@ img{
 .container{
     display:flex;
     flex-flow:row wrap;
-    gap:50px;
-    margin:50px;
+    justify-content: space-between;
+    gap:50px 20px;
+    margin:25px 50px;
+}
+input{
+    width:500px;
+    padding:10px;
+    background-image: url('assets\\magnifying-glass-solid.svg');
+    background-repeat:no-repeat;
+    background-position:10px center;
+    background-size:14px;
+    
+    border:none;
+    text-indent:20px
+}
+
+.dark{
+    background-color:var(--Very-Dark-Blue);
+    color:var(--White);
+}
+.dark-input{
+    background-color:var(--Dark-Blue);
+    color:white;
 }
