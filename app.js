@@ -6,7 +6,7 @@ const container = document.querySelector('.container')
 let darkBool = false;
 
 function createCard(c){
-    
+    const link = document.createElement('a');
     const div = document.createElement('div');
     const img = document.createElement('img');
     const name = document.createElement('span');
@@ -20,16 +20,18 @@ function createCard(c){
     region.innerHTML = `<b>Region:</b> ${c.region}`;
     capital.innerHTML = `<b>Capital:</b> ${c.capital}`;
 
-    div.appendChild(img);
-    div.appendChild(name);
-    div.appendChild(pop);
-    div.appendChild(region);
-    div.appendChild(capital);
-    div.classList.add('card');
+    link.appendChild(img);
+    link.appendChild(name);
+    link.appendChild(pop);
+    link.appendChild(region);
+    link.appendChild(capital);
+    link.classList.add('card');
     if(darkBool){
-        div.classList.toggle('dark-input')
+        link.classList.toggle('dark-input')
     }
+    div.appendChild(link);
     container.appendChild(div);
+    
 }
 
 
@@ -90,8 +92,14 @@ dark.addEventListener('click',(e)=>{
 
 
 // card click to details page
+
+const details = document.querySelector('details')
+const home = document.querySelector('home')
+
+
 for(let card of container.children){
-    card.addEventListener('click',(e)=>{
-        
+    card.addEventListener('onclick',(e)=>{
+        e.preventDefault();
+        console.log(e.type)
     })
 }
