@@ -4,9 +4,13 @@ var search=[];
 const prompt='in';
 const container = document.querySelector('.container')
 let darkBool = false;
+let details=false;
+const info = document.querySelector('.info')
 
-function createCard(c){
-    const link = document.createElement('a');
+
+
+
+function createCard(c,details = false){
     const div = document.createElement('div');
     const img = document.createElement('img');
     const name = document.createElement('span');
@@ -16,23 +20,65 @@ function createCard(c){
     name.innerHTML = `<b>${c.name}</b>`;
     name.classList.add('name');
     img.src=c.flags.svg;
+    
     pop.innerHTML = `<b>Population:</b> ${c.population}`;
     region.innerHTML = `<b>Region:</b> ${c.region}`;
     capital.innerHTML = `<b>Capital:</b> ${c.capital}`;
 
-    link.appendChild(img);
-    link.appendChild(name);
-    link.appendChild(pop);
-    link.appendChild(region);
-    link.appendChild(capital);
-    link.classList.add('card');
-    if(darkBool){
-        link.classList.toggle('dark-input')
+    div.appendChild(img);
+    div.appendChild(name);
+    if(details){
+        const nativeName = document.createElement('span');
+        nativeName.innerHTML = `<b>Native Name: ${c.nativeName}</b>`;
+        div.append(nativeName);
     }
-    div.appendChild(link);
-    container.appendChild(div);
+    div.appendChild(pop);
+    div.appendChild(region);
+    
+    div.classList.add('card');
+    if(darkBool){
+        div.classList.toggle('dark-input')
+    }
+    div.onclick = function(e){
+        details=true
+        createCard(c,details);
+        console.log('hello')
+       }
+    if(details){
+        window.location.href='details.html';
+        console.log('hello');
+        const subRegion = document.createElement('span');
+        // const capital = document.createElement('span');
+        const toplevelDomain = document.createElement('span');
+        const currencies = document.createElement('span');
+        const languages = document.createElement('span');
+
+        subRegion.innerHTML = `<b>Sub Region: ${c.subregion}</b>`
+        toplevelDomain.innerHTML = `<b>Top Level Domain: ${c.topLevelDomain[0]}`;
+        currencies.innerHTML = `<b>Currencies: ${c.currencies[0].name}`;
+        languages.innerHTML = `<b>Languages: `
+        for(let i=0;i<c.languages.length;i++){
+            languages.innerHTML += `${c.languages[i].name},`
+        }
+        languages.innerHTML += `</b>`
+        
+        div.appendChild(subRegion);
+        div.appendChild(capital);
+        div.appendChild(toplevelDomain);
+        div.appendChild(currencies);
+        div.appendChild(languages);
+        container.appendChild(div)
+
+    }else{
+        div.appendChild(capital);
+        container.appendChild(div);
+    }
+   
+    
     
 }
+
+if(!details){
 
 
 
@@ -63,7 +109,7 @@ for(let i=0;i<act.length;i++){
     
     });
 });
-
+}
 //toggling dark mode tasks
 
 const dark = document.querySelector('.dark-mode')
@@ -91,15 +137,4 @@ dark.addEventListener('click',(e)=>{
 
 
 
-// card click to details page
 
-const details = document.querySelector('details')
-const home = document.querySelector('home')
-
-
-for(let card of container.children){
-    card.addEventListener('onclick',(e)=>{
-        e.preventDefault();
-        console.log(e.type)
-    })
-}
