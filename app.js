@@ -4,13 +4,14 @@ var search=[];
 const prompt='in';
 const container = document.querySelector('.container')
 let darkBool = false;
-let details=false;
+
 const info = document.querySelector('.info')
 
 
 
 
-function createCard(c,details = false){
+function createCard(c){
+    let details=false;
     const div = document.createElement('div');
     const img = document.createElement('img');
     const name = document.createElement('span');
@@ -39,46 +40,19 @@ function createCard(c,details = false){
     if(darkBool){
         div.classList.toggle('dark-input')
     }
-    div.onclick = function(e){
-        details=true
-        createCard(c,details);
-        console.log('hello')
-       }
-    if(details){
-        window.location.href='details.html';
-        console.log('hello');
-        const subRegion = document.createElement('span');
-        // const capital = document.createElement('span');
-        const toplevelDomain = document.createElement('span');
-        const currencies = document.createElement('span');
-        const languages = document.createElement('span');
-
-        subRegion.innerHTML = `<b>Sub Region: ${c.subregion}</b>`
-        toplevelDomain.innerHTML = `<b>Top Level Domain: ${c.topLevelDomain[0]}`;
-        currencies.innerHTML = `<b>Currencies: ${c.currencies[0].name}`;
-        languages.innerHTML = `<b>Languages: `
-        for(let i=0;i<c.languages.length;i++){
-            languages.innerHTML += `${c.languages[i].name},`
-        }
-        languages.innerHTML += `</b>`
-        
-        div.appendChild(subRegion);
-        div.appendChild(capital);
-        div.appendChild(toplevelDomain);
-        div.appendChild(currencies);
-        div.appendChild(languages);
-        container.appendChild(div)
-
-    }else{
-        div.appendChild(capital);
-        container.appendChild(div);
-    }
+    
+   
+    div.appendChild(capital);
+    div.addEventListener('click',(e)=>{
+        console.log(c.name)
+    })
+    container.appendChild(div);
+  
    
     
     
 }
 
-if(!details){
 
 
 
@@ -102,14 +76,21 @@ for(let i=0;i<act.length;i++){
                     createCard(d);
                 }else if(filter.value==='all'){
                     createCard(d);
+                   
                 }
             }
         }
         
+        
     
     });
 });
-}
+
+
+
+
+
+
 //toggling dark mode tasks
 
 const dark = document.querySelector('.dark-mode')
