@@ -1,6 +1,8 @@
 var act = data;
-console.log('Hello')
-// console.log('hello');
+function go_back(){
+    window.history.back()
+}
+console.log()
 // const subRegion = document.createElement('span');
 // // const capital = document.createElement('span');
 // const toplevelDomain = document.createElement('span');

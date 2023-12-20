@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rest countries api</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+    
 </head>
-<body>
+<body >
 <header><span>Where in the world?</span><button class="dark-mode">Dark Mode</button></header>
 <div class="home">
     <div class="search">
@@ -29,6 +30,6 @@
 
 </body>
 
-<script src="file://C:\\Users\\5590\\Desktop\\nithin\\frontendmentor\\rest-countries-api-with-color-theme-switcher-master\\data.json"></script>
-<script src="app.js"></script>
+<script src="{{ url_for('static', filename='data.json') }}"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 </html>

@@ -44,7 +44,7 @@ function createCard(c){
    
     div.appendChild(capital);
     div.addEventListener('click',(e)=>{
-        console.log(c.name)
+        window.location.href = document.URL + '/details/' + c
     })
     container.appendChild(div);
   
